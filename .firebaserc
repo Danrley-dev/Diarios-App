@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "diario-app-1955c": {
+      "hosting": {
+        "diarios-app": [
+          "diario-app-1955c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "diario-app-1955c"
+  }
+}
