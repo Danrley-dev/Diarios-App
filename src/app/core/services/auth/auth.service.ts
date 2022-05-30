@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
-import { collection, doc, Firestore } from '@angular/fire/firestore';
+import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from '@firebase/auth';
 import { setDoc, updateDoc } from '@firebase/firestore';
-import { from, tap } from 'rxjs';
+import { first, from, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,11 @@ export class AuthService {
           this.uid = user?.uid;
         })
       );
+    }
+
+    get userDate(){
+      const userDoc = doc(this.usuarios, this.uid);
+      return docData(userDoc).pipe(first());
     }
 
     signupEmail(email:string, password:string, nome:string, nick:string){
