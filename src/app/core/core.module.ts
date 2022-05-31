@@ -4,8 +4,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from '../shared/material.module';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     NavbarComponent
@@ -13,10 +11,15 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule, // para utilizar o routerLink na navbar
   ],
-  exports: [
+  exports: [ // são os componentes, pipes e etc que ficam "públicos"
     NavbarComponent
-  ]
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
+
+/**
+ * Guardas elementos de contexto global como serviços,
+ * navbar, models e etc.
+ */

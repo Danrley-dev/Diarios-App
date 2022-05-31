@@ -5,16 +5,18 @@ import { DiarioListComponent } from './components/diario-list/diario-list.compon
 
 const routes: Routes = [
   {
-    path:'',
-    redirectTo:'diarios',
-    pathMatch:'full',
+    path: '',
+    redirectTo: 'diarios',
+    pathMatch: 'full',
   },
-  {path:'diarios', component: DiarioListComponent},
-  {path:'diarios/:id', component: DiarioDetailComponent}
+  { path: 'diarios', component: DiarioListComponent },
+  // Essa rota é dinâmica
+  // /diarios/dasdas2133
+  { path: 'diarios/:id', component: DiarioDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DiariosRoutingModule { }
+export class DiariosRoutingModule {}

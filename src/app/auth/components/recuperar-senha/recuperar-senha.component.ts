@@ -5,26 +5,28 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 @Component({
   selector: 'app-recuperar-senha',
   templateUrl: './recuperar-senha.component.html',
-  styleUrls: ['./recuperar-senha.component.scss']
+  styleUrls: ['./recuperar-senha.component.scss'],
 })
 export class RecuperarSenhaComponent implements OnInit {
-  email:string = '';
+  email: string = '';
+
   constructor(
     private authService: AuthService,
     private toast: HotToastService
-    ) { }
+  ) {}
 
-  onSubmit(){
-    this.authService.recoverPassword(this.email)
-    .pipe(this.toast.observe({
-      success:'Email enviado',
-      error: 'Um erro ocorreu',
-      loading: 'Enviando...'
-    }))
-    .subscribe();
-  }
-  
-  ngOnInit(): void {
+  onSubmit() {
+    this.authService
+      .recoverPassword(this.email)
+      .pipe(
+        this.toast.observe({
+          success: 'Email enviado',
+          error: 'Um erro ocorreu',
+          loading: 'Carregando...',
+        })
+      )
+      .subscribe();
   }
 
+  ngOnInit(): void {}
 }

@@ -9,20 +9,26 @@ import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verifica
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 
-
 @NgModule({
   declarations: [
     LoginComponent,
     CadastroComponent,
     RecuperarSenhaComponent,
-    UsuarioNaoVerificadoComponent
+    UsuarioNaoVerificadoComponent,
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}
+
+/**
+ * Agrupar as funcionalidades de autenticação:
+ * - Página de login
+ * - Página de cadastro
+ * - Página de redefinir senha
+ */

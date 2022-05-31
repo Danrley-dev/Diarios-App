@@ -5,20 +5,18 @@ import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  logged$?:Observable<any>;
+  logged$?: Observable<any>;
 
-  constructor(private authService: AuthService) { }
-
-  logout(){
+  logout() {
     this.authService.logout('/login').subscribe();
   }
 
   ngOnInit(): void {
     this.logged$ = this.authService.logged;
   }
-
 }

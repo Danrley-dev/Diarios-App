@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -41,7 +42,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgModule } from '@angular/core';
 
 @NgModule({
   exports: [
@@ -92,3 +92,7 @@ import { NgModule } from '@angular/core';
   ],
 })
 export class MaterialModule { }
+
+/**  Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
