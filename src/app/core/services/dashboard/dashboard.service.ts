@@ -28,4 +28,21 @@ export class DashboardService {
     return collectionData(q);
   }
 
+  getCommonLocals(){
+    return collectionData(this.diarios).pipe(map(this._commonLocals));
+  }
+
+  private _commonLocals(diarios: Diario[]){
+    const todosLocais = diarios.map((diario) => diario.local);
+    const locais = new Set(todosLocais);
+
+    const obj:{[x: string]: number} = {};
+
+    locais.forEach((local) => {
+      obj[local] = todosLocais.filter((loc) => loc === local).length;
+    })
+
+    return obj;
+  }
+
 }
