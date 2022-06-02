@@ -12,7 +12,7 @@ export class WeekPostsComponent implements OnInit {
   chartData$?: Observable<ChartData>;
 
   config: ChartConfiguration['options'] = {
-    responsive: false,
+    responsive: true,
   };
 
   constructor(private dashboardService: DashboardService) { }

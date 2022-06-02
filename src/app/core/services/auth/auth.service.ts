@@ -12,7 +12,7 @@ import {
   User,
 } from '@firebase/auth';
 import { collection, setDoc, updateDoc } from '@firebase/firestore';
-import { first, from, Observable, tap } from 'rxjs';
+import { first, from, map, Observable, switchMap, tap } from 'rxjs';
 
 // Firebase Versão Modular
 @Injectable({
@@ -23,7 +23,7 @@ export class AuthService {
     private auth: Auth, // serviços do firebase authentication
     private db: Firestore, // serviços de banco firestore do firebase
     private router: Router // mudar de rota de forma imperativa
-  ) {}
+  ) { }
 
   uid?: string; // guarda o id único do usuário logado
 
@@ -43,6 +43,19 @@ export class AuthService {
     const userDoc = doc(this.usuarios, this.uid);
     // "Pega" apenas a primeira amostra de dados e encerra o observable
     return docData(userDoc).pipe(first());
+  }
+
+  get isAdmin() {
+    return authState(this.auth).pipe( 
+      first(),
+      switchMap((user: any) => {
+        const userDoc = doc(this.usuarios, user?.uid);
+        return docData(userDoc).pipe(first());
+      }),
+      map((user) => {
+        return user['isAdmin'] === true;
+      })
+    );
   }
 
   usuarios = collection(this.db, 'usuarios'); // referencia possível coleção
