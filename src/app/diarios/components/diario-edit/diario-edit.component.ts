@@ -11,15 +11,17 @@ export class DiarioEditComponent implements OnInit {
   diario: Diario = {} as Diario;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: Diario, // objeto enviado no open {data: diario}
+    @Inject(MAT_DIALOG_DATA) private data: Diario, 
     private ref: MatDialogRef<DiarioEditComponent>
   ) {}
 
   imagem?: File;
+  icone: string = "upload"
 
   setImage(ev: any) {
-    // target é o input file
     this.imagem = ev.target.files[0];
+    document.querySelector(".btn-foto")?.classList.add("btn-foto2");
+    this.icone = "library_add_check"
   }
 
   onSubmit() {

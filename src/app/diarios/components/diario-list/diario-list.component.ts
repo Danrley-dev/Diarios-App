@@ -1,9 +1,11 @@
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Observable } from 'rxjs';
 import { Diario } from 'src/app/core/models/diario';
 import { DiariosService } from 'src/app/core/services/diarios/diarios.service';
+import { UsuariosService } from 'src/app/core/services/usuarios/usuarios.service';
 import { DiarioAddComponent } from '../diario-add/diario-add.component';
 import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
 
@@ -15,20 +17,19 @@ import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
 export class DiarioListComponent implements OnInit {
   allDiarios$?: Observable<Diario[]>;
   meusDiarios$?: Observable<Diario[]>;
+  cols: number = 3;
+  rows: string = "2:2";
 
   constructor(
     private dialog: MatDialog,
     private diariosService: DiariosService,
-    private toast: HotToastService
-  ) {} // Abrir dialogs baseado em componentes existentes
-
+    private toast: HotToastService,
+    public breakpointObserver: BreakpointObserver,
+  ) { }
   onClickAdd() {
-    // DiarioAddComponent será mostrado dentro do dialog
     const ref = this.dialog.open(DiarioAddComponent, { maxWidth: '512px' });
-    // Acontece logo após o fechamento do dialog
     ref.afterClosed().subscribe({
       next: (result) => {
-        // Evento que ocorre ao fechar dialog
         if (result) {
           this.diariosService
             .addDiario(result.diario, result.imagem)
@@ -46,7 +47,6 @@ export class DiarioListComponent implements OnInit {
   }
 
   onClickEdit(diario: Diario) {
-    // Criar referência p/ dialog
     const ref = this.dialog.open(DiarioEditComponent, {
       maxWidth: '512px',
       data: { ...diario },
@@ -82,5 +82,38 @@ export class DiarioListComponent implements OnInit {
   ngOnInit(): void {
     this.allDiarios$ = this.diariosService.getTodosDiarios();
     this.meusDiarios$ = this.diariosService.getDiariosUsuario();
+
+
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).subscribe((status: BreakpointState) => {
+      if (status.breakpoints[Breakpoints.XSmall]) {
+        this.cols = 1;
+        this.rows = "1:1.4"
+
+      }
+      if (status.breakpoints[Breakpoints.Small]) {
+        this.cols = 2;
+        this.rows = "1.5:2.4"
+
+      }
+      if (status.breakpoints[Breakpoints.Medium]) {
+        this.cols = 3;
+        this.rows = "1:1.4"
+      }
+      if (status.breakpoints[Breakpoints.Large]) {
+        this.cols = 4;
+        this.rows = "1:1.4"
+
+      }
+      if (status.breakpoints[Breakpoints.XLarge]) {
+        this.cols = 4;
+        this.rows = "1.2:1.4"
+      }
+    });
   }
 }

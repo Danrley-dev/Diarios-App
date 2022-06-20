@@ -6,15 +6,14 @@ import { DashboardService } from 'src/app/core/services/dashboard/dashboard.serv
 @Component({
   selector: 'app-last-posts',
   templateUrl: './last-posts.component.html',
-  styleUrls: ['./last-posts.component.scss']
+  styleUrls: ['./last-posts.component.scss'],
 })
 export class LastPostsComponent implements OnInit {
   lastPosts$?: Observable<Diario[]>;
-  
-  constructor(private dashboardService: DashboardService) { }
-  
+
+  constructor(private dashboardService: DashboardService) {}
+
   ngOnInit(): void {
     this.lastPosts$ = this.dashboardService.getLastPosts();
   }
-
 }

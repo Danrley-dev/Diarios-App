@@ -6,11 +6,12 @@ import { DashboardService } from 'src/app/core/services/dashboard/dashboard.serv
 @Component({
   selector: 'app-common-locals',
   templateUrl: './common-locals.component.html',
-  styleUrls: ['./common-locals.component.scss']
+  styleUrls: ['./common-locals.component.scss'],
 })
 export class CommonLocalsComponent implements OnInit {
+  constructor(private dashboardService: DashboardService) {}
+
   chartData$?: Observable<ChartData>;
-  constructor(private dashboardService: DashboardService) { }
 
   config: ChartConfiguration['options'] = {
     responsive: false,
@@ -27,14 +28,13 @@ export class CommonLocalsComponent implements OnInit {
       map((data) => {
         return {
           labels: Object.keys(data),
-          datasets:[
+          datasets: [
             {
               data: Object.values(data),
-           },
-         ],
-       };
-     })
-   );
- }
-
+            },
+          ],
+        };
+      })
+    );
+  }
 }

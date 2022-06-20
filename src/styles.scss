@@ -1,23 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'berlin-sans-fb-demi-bold';
+  src: url('./assets/BRLNSDB.TTF');
+}
 
 html,
 body {
   height: 100%;
+
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
 .form-wrapper {
   padding: 16px;
+  align-items: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
+
+.esqueci {
+  margin-bottom: 15px;
+
+}
+
+.button {
+  margin-bottom: 5 px;
+  margin-top: 10px;
+}
+
+.span {
+  margin-bottom: 5px;
+}
+
+ngx-recaptcha2 {
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  max-width: fit-content;
+}
+
+
 
 .diario-add {
   display: flex;
@@ -27,4 +65,71 @@ form {
 
 .diario-add mat-form-field {
   width: 100%;
+}
+
+@media(max-width: 475px) {
+  /* You can add global styles to this file, and also import other style files */
+
+  html,
+  body {
+    height: 100%;
+
+  }
+
+  body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  }
+
+  .form-wrapper {
+    padding: 16px;
+    align-items: flex;
+    justify-content: center;
+    text-align: center;
+
+
+
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .esqueci {
+    margin-bottom: 15px;
+  }
+
+  .button {
+    margin-bottom: 5 px;
+  }
+
+  .span {
+    margin-bottom: 5px;
+  }
+
+  ngx-recaptcha2 {
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    max-width: fit-content;
+  }
+
+  .diario-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diario-add mat-form-field {
+    width: 100%;
+  }
 }

@@ -6,33 +6,32 @@ import { LoginComponent } from './components/login/login.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verificado/usuario-nao-verificado.component';
 
-const redirectLoggedToDiarios = () => redirectLoggedInTo(['/diarios'])
+const redirectLoggedInToDiarios = () => redirectLoggedInTo(['/diarios']);
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    ...canActivate(redirectLoggedToDiarios),
+    ...canActivate(redirectLoggedInToDiarios),
   },
   {
     path: 'cadastro',
     component: CadastroComponent,
-    ...canActivate(redirectLoggedToDiarios),
+    ...canActivate(redirectLoggedInToDiarios),
   },
   {
     path: 'recuperar-senha',
     component: RecuperarSenhaComponent,
-    ...canActivate(redirectLoggedToDiarios),
+    ...canActivate(redirectLoggedInToDiarios),
   },
   {
     path: 'confirmar-email',
     component: UsuarioNaoVerificadoComponent,
-    ...canActivate(redirectLoggedToDiarios),
+    ...canActivate(redirectLoggedInToDiarios),
   },
 ];
 
 @NgModule({
-  // As rotas do array serão unidas com as do app-routing
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })

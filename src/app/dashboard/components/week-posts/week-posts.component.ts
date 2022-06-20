@@ -6,7 +6,7 @@ import { DashboardService } from 'src/app/core/services/dashboard/dashboard.serv
 @Component({
   selector: 'app-week-posts',
   templateUrl: './week-posts.component.html',
-  styleUrls: ['./week-posts.component.scss']
+  styleUrls: ['./week-posts.component.scss'],
 })
 export class WeekPostsComponent implements OnInit {
   chartData$?: Observable<ChartData>;
@@ -15,10 +15,10 @@ export class WeekPostsComponent implements OnInit {
     responsive: true,
   };
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.chartData$ = this.dashboardService.getWeekPost().pipe(
+    this.chartData$ = this.dashboardService.getWeekPosts().pipe(
       map((data) => {
         return {
           labels: Object.keys(data),
@@ -32,5 +32,4 @@ export class WeekPostsComponent implements OnInit {
       })
     );
   }
-
 }

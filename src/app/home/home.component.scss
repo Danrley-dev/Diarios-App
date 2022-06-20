@@ -1,0 +1,167 @@
+.bgcolor {
+    background-color: #F0F0F2;
+    padding-bottom: 150px;
+}
+
+img {
+    width: 100%;
+    background-size: cover;
+}
+
+.btn-cadastrar {
+    position: absolute;
+    bottom: -40px;
+    left: 250px;
+}
+
+.btn-cadastrar button {
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: #5D0070;
+}
+
+.btn-cadastrar button:hover {
+    background-color: #5D0070;
+    transition: 0.5s;
+    color: white;
+}
+
+.recurso{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.recurso h1{
+    font-size: 2.5rem;
+    font-family:'berlin-sans-fb-demi-bold', sans-serif; 
+}
+
+.pai {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filho {
+    background-image: linear-gradient(to top, black, #77008E);
+    color: white;
+    width: 400px;
+    height: 350px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.perfil img {
+    position: relative;
+    bottom: 30px;
+    margin: auto;
+    background-color: white;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.filho p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.redes {
+    margin-top: 70px;
+}
+
+.redes mat-icon {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.margin h1{
+    text-align: center;
+    font-size: 2.3rem;
+    font-family: 'berlin-sans-fb-demi-bold', sans-serif;;
+}
+
+.margin p{
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.margin{
+    width: 90%;
+    text-align: left;
+}
+
+.col-2 img {
+    max-width: 70%;
+}
+
+.body {
+    background: -webkit-linear-gradient(to right, #77008E, black);
+    background: linear-gradient(to right, #9101ad, #450053);
+    min-height: 70vh;
+}
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+    box-shadow: none;
+}
+
+.fab-wrapper{
+    position: fixed;
+    bottom: 50px;
+    left: 16px;
+    z-index:999;
+  }
+
+.fab-wrapper a {
+    background-color: #9e04bd;
+}
+
+.fab-wrapper a:hover {
+    background-color: #b704da;
+}
+
+@media (max-width: 700px) {
+    .filho {
+        margin-top: 50px;
+        width: 300px;
+        height: 250px;
+    }
+
+    .btn-cadastrar button {
+        visibility: hidden;
+    }
+
+    .redes {
+        visibility: hidden;
+    }
+
+    .redes mat-icon {
+        visibility: hidden;
+    }
+
+    .margin{
+       margin-top: -185px;
+    }
+
+    .col-2 img{
+        margin-top: -150px;
+    }
+
+}
+
+@media (max-width: 1080px) {
+    .btn-cadastrar button {
+        visibility: hidden;
+    }
+}

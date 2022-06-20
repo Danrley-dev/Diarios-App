@@ -1,12 +1,40 @@
-<mat-toolbar color="primary">
-  <span>Diários</span>
+<mat-toolbar class="bg">
+  <span>
+    <a mat-button routerLink="/"><img src="assets/img/logodiario.png" alt="logo"></a>
+  </span>
+
   <span class="spacer"></span>
+
   <div *ngIf="logged$ | async; else unlogged" class="link-area">
-    <a mat-button routerLink="/diarios">Diários</a>
-    <button mat-icon-button (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </div>
+    <div *ngIf="usuario$ | async as usuario">
+      
+      <img
+        class="profile-image-toolbar"
+        [src]="usuario.photoURL ?? 'assets/img/image-placeholder.png'"   
+      />
+       <span class="nomeperfil">{{ usuario.nome }}</span>
+       <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon class="mobile">menu</mat-icon>
+       <mat-icon class="coloricon">expand_more</mat-icon>
+       </button>
+    </div>
+
+    <mat-menu class="matmenucolor" #userMenu="matMenu">
+       <button mat-menu-item routerLink="/diarios">
+        <mat-icon [ngStyle]="{'color':'white'}">home</mat-icon>
+        Diarios
+      </button>
+      <button mat-menu-item routerLink="/perfil">
+        <mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon>
+        Perfil
+      </button>
+      <button mat-menu-item  (click)="logout()">
+        <mat-icon [ngStyle]="{'color':'white'}">logout</mat-icon>
+        Logout
+      </button>
+    </mat-menu>
+  </div> 
+
   <ng-template #unlogged>
     <div class="link-area">
       <a mat-button routerLink="/login">Login</a>

@@ -1,3 +1,59 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.bg{
+  background-color: #5D0070;
+}
+
+img{
+  width: 150px;
+}
+
+a{
+  color: white;
+}
+
+.profile-image-toolbar{
+  border-radius: 100%;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.nomeperfil{
+  color: white;
+  font-size: 14px;
+}
+
+.mobile{
+  display: none;
+}
+
+.coloricon{
+  color: white;
+}
+
+::ng-deep .matmenucolor {
+  background:#5D0070;
+}
+
+::ng-deep .matmenucolor button  {
+  color: white;
+}
+
+@media screen and (max-width: 450px){
+    .profile-image-toolbar{
+      display: none;
+    }
+    .nomeperfil{
+      display: none;
+    }
+    .coloricon{
+      display: none;
+    }
+    .mobile{
+      display: inline;
+       color: white;
+    }
+}

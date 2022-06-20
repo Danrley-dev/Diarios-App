@@ -6,7 +6,10 @@
     >
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Seu email" type="email" name="email" [(ngModel)]="email" required />
+      <input matInput placeholder="Seu email" [type]="hide ? 'password' : 'text'" name="email" [(ngModel)]="email" required />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>      
       <mat-icon matPrefix>email</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" [disabled]="form.invalid">

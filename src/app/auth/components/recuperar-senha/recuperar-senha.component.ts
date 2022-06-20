@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class RecuperarSenhaComponent implements OnInit {
   email: string = '';
+  hide = true;
 
   constructor(
     private authService: AuthService,

@@ -8,6 +8,7 @@ import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-
 import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verificado/usuario-nao-verificado.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,8 @@ import { MaterialModule } from '../shared/material.module';
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
+    NgxCaptchaModule,
   ],
 })
 export class AuthModule {}
 
-/**
- * Agrupar as funcionalidades de autenticação:
- * - Página de login
- * - Página de cadastro
- * - Página de redefinir senha
- */

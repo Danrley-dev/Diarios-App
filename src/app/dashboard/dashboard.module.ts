@@ -16,9 +16,13 @@ import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgChartsModule } from 'ng2-charts';
 
-
 @NgModule({
-  declarations: [DashboardComponent, WeekPostsComponent, CommonLocalsComponent, LastPostsComponent],
+  declarations: [
+    DashboardComponent,
+    WeekPostsComponent,
+    CommonLocalsComponent,
+    LastPostsComponent,
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -31,6 +35,6 @@ import { NgChartsModule } from 'ng2-charts';
     MaterialModule,
     SharedModule,
     NgChartsModule
-  ]
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

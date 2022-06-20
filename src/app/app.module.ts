@@ -15,9 +15,14 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { DiariosModule } from './diarios/diarios.module';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MaterialModule } from './shared/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,15 +32,17 @@ import { DashboardModule } from './dashboard/dashboard.module';
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     CoreModule,
-    AuthModule, // As rotas em auth agora fazem parte do app
+    AuthModule, 
     DiariosModule,
     HotToastModule.forRoot({
       position: 'bottom-center',
     }),
-    NgChartsModule,
-    DashboardModule
+    DashboardModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent], // primeiro componente a ser exibido
+  bootstrap: [AppComponent], 
 })
 export class AppModule {}

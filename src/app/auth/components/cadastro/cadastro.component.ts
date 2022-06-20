@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent implements OnInit {
+  hide = true;
   signupForm = this.fb.group(
     {
       nome: ['', [Validators.required]],
@@ -21,9 +22,12 @@ export class CadastroComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(8)]],
       confirma_senha: [''],
+      recaptcha: ['', Validators.required],
     },
     { validators: [this.matchPasswords] }
   );
+
+  siteKey: string;
 
   matchPasswords(control: AbstractControl): ValidationErrors | null {
     return control.get('senha')!.value !== control.get('confirma_senha')!.value
@@ -35,7 +39,9 @@ export class CadastroComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private toast: HotToastService
-  ) {}
+  ) {
+    this.siteKey = "6Ldcl0AgAAAAADWVLbJOr0hLF5xwSNGVnNpAv5IB";
+  }
 
   onSubmit() {
     const { email, senha, nick, nome } = this.signupForm.value;
@@ -43,7 +49,7 @@ export class CadastroComponent implements OnInit {
       .signupEmail(email, senha, nome, nick)
       .pipe(
         this.toast.observe({
-          success: 'Usuário criado com sucesso',
+          success: 'Conta criada com sucesso, seja bem-vindo(a)',
           error: 'Um erro ocorreu',
           loading: 'Criando usuário...',
         })
@@ -56,7 +62,20 @@ export class CadastroComponent implements OnInit {
       .loginGoogle()
       .pipe(
         this.toast.observe({
-          success: 'Login efetuado',
+          success: 'Conta criada com sucesso, seja bem-vindo(a)',
+          error: 'Operação cancelada',
+          loading: 'Fazendo login...',
+        })
+      )
+      .subscribe();
+  }
+
+  onLoginFacebook() {
+    this.authService
+      .loginFacebook()
+      .pipe(
+        this.toast.observe({
+          success: 'Conta criada com sucesso, seja bem-vindo(a)',
           error: 'Operação cancelada',
           loading: 'Fazendo login...',
         })
